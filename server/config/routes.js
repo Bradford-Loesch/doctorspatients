@@ -5,7 +5,7 @@ module.exports = function(app) {
 
     // User routes
     app.get('/users', Users.index);
-    app.get('/users/:id', Users.show);
+    app.get('/users/:pk', Users.show);
     app.post('/users', Users.login);
 
     // Appointment Routes

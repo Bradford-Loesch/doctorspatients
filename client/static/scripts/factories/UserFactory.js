@@ -6,8 +6,8 @@ app.factory('UserFactory', ['$http', function($http) {
         return $http.get('/users');
     };
 
-    factory.show = function() {
-        return $http.get('/users/' + id)
+    factory.show = function(pk) {
+        return $http.get('/users/' + pk)
     }
 
     factory.login = function(user) {

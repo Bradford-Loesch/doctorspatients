@@ -1,0 +1,8 @@
+<div class="container">
+    <form>
+        <select>
+            <option ng-repeat="one_doctor in doctor_list">{{ one_doctor.first_name }} {{ one_doctor.last_name }}</option>
+        </select>
+        <input type="datetime-local" name="appt_time" value="" ng-model="appt.time">
+    </form>
+</div>

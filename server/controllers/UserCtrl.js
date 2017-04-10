@@ -19,7 +19,13 @@ module.exports = {
             response.json({success: false, errors: errors})
         } else {
             //db stuff
+            user = db.one(SELECT FROM User WHERE username=$1 AND password=$2, [data.username, data.password]);
+            request.session.user = user;
         }
+    
+    },
 
+    logout: function (request, response) {
+        delete request.session.user;
     }
 }

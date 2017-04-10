@@ -3,7 +3,7 @@ app.factory('UserFactory', ['$http', function($http) {
     var factory = {};
 
     factory.index = function() {
-        return $http.get('/users');
+        return $http.get('/users/');
     };
 
     factory.show = function(pk) {
@@ -11,7 +11,7 @@ app.factory('UserFactory', ['$http', function($http) {
     }
 
     factory.login = function(user) {
-        return $http.post('/users', user);
+        return $http.post('/users/', user);
     };
 
     factory.logout = function() {

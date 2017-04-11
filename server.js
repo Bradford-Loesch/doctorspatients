@@ -18,6 +18,7 @@ var sess = {
 }
 
 app.use(express.static(path.join(root,'client')));
+app.use(express.static(path.join(root,'node_modules')));
 app.use(session(sess));
 app.use(bp.json());
 

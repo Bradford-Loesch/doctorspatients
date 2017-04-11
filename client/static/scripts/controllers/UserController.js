@@ -20,7 +20,7 @@ app.controller('UserController', ['$scope', '$routeParams', '$location', 'UserFa
         UserFactory.show().then(function(response) {
             if (response.body.success) {
                 $scope.patient = response.body.patient;
-                $location.url('#!/doctor/' + $scope.patient.pk);
+                $location.url('/doctor/' + $scope.patient.pk);
             } else {
                 console.log(errors);
             }
@@ -39,12 +39,14 @@ app.controller('UserController', ['$scope', '$routeParams', '$location', 'UserFa
 
     $scope.login = function() {
         UserFactory.login($scope.user).then(function(response) {
-            if (response.body.success) {
-                $scope.user = response.body.user;
+            if (response.data.success) {
+                $scope.user = response.data.user;
+                console.log(response.data.user);
+                // $scope.user = {};
                 if ($scope.user.role == 1) {
-                    $location.url('#!/doctor/');
+                    $location.url("/doctor/");
                 } else if ($scope.user.role == 0) {
-                    $location.url('#!/patient/' + $scope.user.pk);
+                    $location.url("/patient/" + $scope.user.id);
                 } else {
                     console.log("no role assigned");
                 }

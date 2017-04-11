@@ -5,11 +5,11 @@ app.config(function ($routeProvider) {
         .when('/', {
             templateUrl: 'partials/login.html'
         })
-        .when('/dashboard', {
+        .when('/doctor/:pk', {
             templateUrl: 'partials/dashboard.html'
         })
-        .when('/poll/:id', {
-            templateUrl: 'partials/show.html'
+        .when('/patient/:pk', {
+            templateUrl: 'partials/show_patient.html'
         })
         .when('/create', {
             templateUrl: 'partials/create.html'

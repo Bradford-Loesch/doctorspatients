@@ -6,6 +6,10 @@ module.exports = {
 
     },
 
+    show: function(request, response) {
+
+    },
+
     login: function (request, response) {
         var errors = [];
         var data = request.body;
@@ -19,7 +23,7 @@ module.exports = {
             response.json({success: false, errors: errors})
         } else {
             //db stuff
-            user = db.one(SELECT FROM User WHERE username=$1 AND password=$2, [data.username, data.password]);
+            user = db.get('SELECT FROM User WHERE email=$1 AND password=$2', [data.username, data.password]);
             request.session.user = user;
         }
     

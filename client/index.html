@@ -5,10 +5,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
+
+        <script src="/cdn/angular/angular.js"></script>
+        <script src="/cdn/angular-route/angular-route.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/UserController.js"></script>
+
     </head>
     <body ng-app="app">
         
         <div ng-controller="UserController">
+            <h1>Doctor/Patient Portal</h1>
             <div ng-view="">
                 <!--load partial views-->
             </div>

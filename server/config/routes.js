@@ -1,5 +1,5 @@
-var Users = require('./../controllers/UsersCtrl.js')
-var Appointments = require('./../controllers/ApptsCtrl.js')
+var Users = require('./../controllers/UserCtrl.js')
+var Appts = require('./../controllers/ApptCtrl.js')
 
 module.exports = function(app) {
 
@@ -14,5 +14,5 @@ module.exports = function(app) {
     app.get('/appts/:pk', Appts.show);
     app.post('/appts/', Appts.create);
     app.patch('/appts/:pk', Appts.update);
-    app.delete('/appts/:pk', Appts.delete);
+    app.delete('/appts/:pk', Appts.destroy);
 }

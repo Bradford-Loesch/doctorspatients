@@ -2,7 +2,7 @@ app.factory('ApptFactory', ['$http', function($http) {
 
     var factory = {};
 
-    factory.index = function() {
+    factory.appt_list = function(pk) {
         return $http.get('/appts');
     };
 

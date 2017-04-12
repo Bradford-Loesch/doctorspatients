@@ -3,8 +3,8 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'ApptFa
     $scope.appt_list = [];
     $scope.doctor_list = [];
 
-    $scope.index = function() {
-        ApptFactory.index().then(function(response) {
+    $scope.appt_list = function() {
+        ApptFactory.appt_list().then(function(response) {
             if (response.data.success) {
                 $scope.patient_list = response.data.patients
             } else {
@@ -14,8 +14,12 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'ApptFa
     };
 
     $scope.doctor_list = function() {
-        ApptFactory.doctor_list
-    }
+        ApptFactory.doctor_list().then(function() {
+            if (response.data.success) {
+                $scope.doctor_list = response.data.doctor_list;
+            }
+        })
+    };
 
     $scope.show = function() {
         ApptFactory.show($routeParams.pk).then(function(response) {
@@ -47,10 +51,14 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'ApptFa
         })
     };
 
-    if ($location.url().includes('new_appt')) {
-        $scope.doctor_list();
-    } else {
-        $scope.index();
-    }
+    $scope.appt_list();
+
+    // if ($location.url().includes('new_appt')) {
+    //     $scope.doctor_list();
+    // } else {
+    //     // $scope.index();
+    //     console.log('failed to find new_appt');
+    //     console.log($location.url());
+    // }
 
 }])

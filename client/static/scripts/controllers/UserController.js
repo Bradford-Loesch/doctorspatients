@@ -5,11 +5,11 @@ app.controller('UserController', ['$scope', '$routeParams', '$location', 'UserFa
         UserFactory.get_user().then(function(response) {
             if (response.data.success) {
                 $scope.user = response.data.user;
-                if ($scope.user.role == 1) {
-                    $location.url('/doctor/');
-                } else if ($scope.user.role == 0) {
-                    $location.url('/patient/' + $scope.user.id);
-                }
+                // if ($scope.user.role == 1) {
+                //     $location.url('/doctor/');
+                // } else if ($scope.user.role == 0) {
+                //     $location.url('/patient/' + $scope.user.id);
+                // }
             } else {
                 console.log('no user in session');
                 $location.url('/');

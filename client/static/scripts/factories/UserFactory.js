@@ -2,8 +2,12 @@ app.factory('UserFactory', ['$http', function($http) {
 
     var factory = {};
 
-    factory.index = function() {
-        return $http.get('/users/list');
+    factory.patient_list = function() {
+        return $http.get('/users/patients');
+    };
+    
+    factory.doctor_list = function() {
+        return $http.get('/users/doctors');
     };
 
     factory.show = function(pk) {

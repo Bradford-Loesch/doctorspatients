@@ -12,7 +12,7 @@ module.exports = function(app) {
     app.post('/users/', Users.login);
 
     // Appointment Routes
-    app.get('/appts/', Appts.index);
+    app.get('/appts/', Appts.appt_list);
     app.get('/appts/:pk', Appts.show);
     app.post('/appts/', Appts.create);
     app.patch('/appts/:pk', Appts.update);

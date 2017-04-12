@@ -1,20 +1,9 @@
-app.controller('ApptController', ['$scope', '$routeParams', '$location', 'ApptFactory', function($scope, $routeParams, $location, ApptFactory) {
+app.controller('ApptController', ['$scope', '$routeParams', '$location', 'UserFactory', 'ApptFactory', function($scope, $routeParams, $location, UserFactory, ApptFactory) {
     $scope.appt = {};
-    $scope.appt_list = [];
     $scope.doctor_list = [];
 
-    $scope.appt_list = function() {
-        ApptFactory.appt_list().then(function(response) {
-            if (response.data.success) {
-                $scope.patient_list = response.data.patients
-            } else {
-                console.log(errors);
-            }
-        })
-    };
-
     $scope.doctor_list = function() {
-        ApptFactory.doctor_list().then(function() {
+        UserFactory.doctor_list().then(function(response) {
             if (response.data.success) {
                 $scope.doctor_list = response.data.doctor_list;
             }
@@ -32,9 +21,11 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'ApptFa
     };
 
     $scope.create = function() {
+        $scope.appt.patient = $routeParams.pk;
+        console.log($scope.appt);
         ApptFactory.create($scope.appt).then(function(response) {
             if (response.data.success) {
-                $location.url('/patient' + response.data.appt.patient_id);
+                $location.url('/patient/' + $routeParams.pk);
             }
         })
     };
@@ -51,14 +42,13 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'ApptFa
         })
     };
 
-    $scope.appt_list();
 
-    // if ($location.url().includes('new_appt')) {
-    //     $scope.doctor_list();
-    // } else {
-    //     // $scope.index();
-    //     console.log('failed to find new_appt');
-    //     console.log($location.url());
-    // }
+    if ($location.url().includes('new_appt')) {
+        $scope.doctor_list();
+    } else {
+        // $scope.index();
+        console.log('failed to find new_appt');
+        console.log($location.url());
+    }
 
 }])

@@ -1,6 +1,6 @@
-<div class="container" ng-controller="PatientController">
+<div class="container" ng-controller="DoctorController">
     <h3>Current Patients</h3>
     <ul ng-if="patient_list.length > 0">
-        <li ng-repeat="one_patient in patient_list"><a href="#!/doctor/" + {{ one_patient.pk }}></a></li>
+        <li ng-repeat="one_patient in patient_list"><a href="#!/patient/{{ one_patient.id }}"> {{ one_patient.first_name }} {{ one_patient.last_name }}</a></li>
     </ul>
 </div>

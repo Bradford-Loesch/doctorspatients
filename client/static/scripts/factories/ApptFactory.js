@@ -3,11 +3,7 @@ app.factory('ApptFactory', ['$http', function($http) {
     var factory = {};
 
     factory.appt_list = function(pk) {
-        return $http.get('/appts');
-    };
-
-    factory.doctor_list = function() {
-        return $http.get('/users/doctors');
+        return $http.get('/appts/');
     };
 
     factory.show = function(pk) {
@@ -15,7 +11,7 @@ app.factory('ApptFactory', ['$http', function($http) {
     };
 
     factory.create = function(appt) {
-        return $http.post('/appts/')
+        return $http.post('/appts/', appt)
     };
 
     factory.update = function(appt) {

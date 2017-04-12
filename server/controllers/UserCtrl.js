@@ -2,13 +2,12 @@ var fs = require('fs');
 
 module.exports = {
     patients: function(request, response) {
-        var errors = [];
-
+        db.all('SELECT * FROM User Where role=0', function(err, patient_list) {
+            response.json({success:true, patient_list: patient_list});
+        });
     },
 
     doctors: function(request, response) {
-        var errors = [];
-        console.log('doctors function');
         db.all('SELECT * FROM User Where role=1', function(err, doctor_list) {
             response.json({success:true, doctor_list: doctor_list});
         });

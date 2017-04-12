@@ -1,36 +1,50 @@
 <div class="container">
-    <table>
-        <tr>
-            <td>First Name:</td>
-            <td ng-bind="user.first_name"></td>
-        </tr>
-        <tr>
-            <td>Last Name:</td>
-            <td ng-bind="user.last_name"></td>
-        </tr>
-        <tr>
-            <td>Age:</td>
-            <td ng-bind="user.age"></td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td ng-bind="user.email"></td>
-        </tr>
-        <tr>
-            <td>Phone Number:</td>
-            <td ng-bind="user.phone"></td>
-        </tr>
-    </table>
-    <table>
-        <thead>
-            <th>Doctor</th>
-            <th>Purpose</th>
-            <th>Date and Time</th>
-        </thead>
-        <tr ng-repeat="one_appt in appt_list">
-            <td>{{ one_appt.doctor.first_name }} {{ one_appt.doctor.last_name }}</td>
-            <td>{{ one_appt.purpose }}</td>
-            <td>{{ one_appt.time }}</td>
-        </tr>
-    </table>
+    <div ng-controller="PatientController">
+        <h3>Patient Information</h3>
+        <table>
+            <tr>
+                <td>First Name:</td>
+                <td ng-bind="patient.first_name"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td ng-bind="patient.last_name"></td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td ng-bind="patient.age"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td ng-bind="patient.email"></td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td ng-bind="patient.phone"></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td>
+                    <span ng-bind="patient.street"></span><br>
+                    <span ng-bind="patient.city"></span>, <span ng-bind="patient.state"></span> <span ng-bind="patient.zip"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div ng-controller="ApptController">
+        <h3>Scheduled Appointments</h3>
+        <table>
+            <thead>
+                <th>Doctor</th>
+                <th>Purpose</th>
+                <th>Date and Time</th>
+            </thead>
+            <tr ng-repeat="one_appt in appt_list">
+                <td>{{ one_appt.doctor.first_name }} {{ one_appt.doctor.last_name }}</td>
+                <td>{{ one_appt.purpose }}</td>
+                <td>{{ one_appt.time }}</td>
+            </tr>
+        </table>
+        <h5><a href="/patient/" + patient.id + "/new_appt">Schedule a new appointment</a></h5>
+    </div>
 </div>

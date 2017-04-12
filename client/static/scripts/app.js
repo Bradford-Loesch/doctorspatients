@@ -5,14 +5,14 @@ app.config(function ($routeProvider) {
         .when('/', {
             templateUrl: 'partials/login.html'
         })
-        .when('/doctor/:pk', {
-            templateUrl: 'partials/dashboard.html'
+        .when('/doctor', {
+            templateUrl: 'partials/doctor.html'
         })
         .when('/patient/:pk', {
             templateUrl: 'partials/show_patient.html'
         })
-        .when('/create', {
-            templateUrl: 'partials/create.html'
+        .when('/patient/:pk/new_appt', {
+            templateUrl: 'partials/create_appt.html'
         })
         .otherwise({
             redirectTo: '/'

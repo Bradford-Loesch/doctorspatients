@@ -3,7 +3,7 @@ app.factory('ApptFactory', ['$http', function($http) {
     var factory = {};
 
     factory.appt_list = function(pk) {
-        return $http.get('/appts/');
+        return $http.get('/appts/' + pk);
     };
 
     factory.show = function(pk) {

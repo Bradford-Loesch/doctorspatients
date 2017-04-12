@@ -13,7 +13,7 @@ module.exports = function(app) {
 
     // Appointment Routes
     app.get('/appts/', Appts.appt_list);
-    app.get('/appts/:pk', Appts.show);
+    app.get('/appts/:pk', Appts.appt_list);
     app.post('/appts/', Appts.create);
     app.patch('/appts/:pk', Appts.update);
     app.delete('/appts/:pk', Appts.destroy);

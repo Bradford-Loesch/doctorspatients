@@ -19,7 +19,6 @@ app.factory('UserFactory', ['$http', function($http) {
     };
 
     factory.logout = function() {
-        console.log('factory');
         return $http.get('/users/logout');
     };
 

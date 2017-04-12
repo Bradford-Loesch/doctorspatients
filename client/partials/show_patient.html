@@ -30,21 +30,21 @@
                 </td>
             </tr>
         </table>
-    </div>
-    <div ng-controller="ApptController">
-        <h3>Scheduled Appointments</h3>
-        <table>
-            <thead>
-                <th>Doctor</th>
-                <th>Purpose</th>
-                <th>Date and Time</th>
-            </thead>
-            <tr ng-repeat="one_appt in appt_list">
-                <td>{{ one_appt.doctor.first_name }} {{ one_appt.doctor.last_name }}</td>
-                <td>{{ one_appt.purpose }}</td>
-                <td>{{ one_appt.time }}</td>
-            </tr>
-        </table>
-        <h5><a href="/patient/" + patient.id + "/new_appt">Schedule a new appointment</a></h5>
+        <div ng-controller="ApptController">
+            <h3>Scheduled Appointments</h3>
+            <table>
+                <thead>
+                    <th>Doctor</th>
+                    <th>Purpose</th>
+                    <th>Date and Time</th>
+                </thead>
+                <tr ng-repeat="one_appt in appt_list">
+                    <td>{{ one_appt.doctor.first_name }} {{ one_appt.doctor.last_name }}</td>
+                    <td>{{ one_appt.purpose }}</td>
+                    <td>{{ one_appt.time }}</td>
+                </tr>
+            </table>
+            <h5><a href="#!/patient/{{ patient.id }}/new_appt">Schedule a new appointment</a></h5>
+        </div>
     </div>
 </div>

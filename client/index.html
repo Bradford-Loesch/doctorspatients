@@ -19,7 +19,7 @@
     <body ng-app="app">
         <div ng-controller="UserController">
             <h1>Doctor/Patient Portal</h1>
-            <h3 ng-if="user !== {}">Welcome <span ng-bind="user.first_name"></span> <button ng-click="logout()">Log Out</button></h3>
+            <h3 ng-if="user.first_name">Welcome <span ng-bind="user.first_name"></span> <button ng-click="logout()">Log Out</button></h3>
             <div ng-view="">
                 <!--load partial views-->
             </div>

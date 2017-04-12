@@ -1,9 +1,17 @@
 var fs = require('fs');
 
 module.exports = {
-    index: function(request, response) {
+    patients: function(request, response) {
         var errors = [];
 
+    },
+
+    doctors: function(request, response) {
+        var errors = [];
+        console.log('doctors function');
+        db.all('SELECT * FROM User Where role=1', function(err, doctor_list) {
+            response.json({success:true, doctor_list: doctor_list});
+        });
     },
 
     show: function(request, response) {
@@ -34,7 +42,7 @@ module.exports = {
         console.log('logout function');
         console.log(request.session.user);
         request.session.destroy(function() {
-            response.json({success: false});
+            response.json({success: true});
         });
     }
 }

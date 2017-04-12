@@ -34,13 +34,12 @@ app.controller('UserController', ['$scope', '$routeParams', '$location', 'UserFa
     };
 
     $scope.logout = function() {
-        console.log('triggered');
         UserFactory.logout().then(function(response) {
-            console.log('callback');
             if (response.data.success) {
-                console.log(response.data);
                 $scope.user = {};
                 $location.url('/');
+            } else {
+                console.log(response.data);
             }
         })
     };

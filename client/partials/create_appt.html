@@ -1,9 +1,12 @@
-<div class="container">
+<div class="container" ng-controller="ApptController">
     <form>
+        <label for="doctor">Select a doctor</label>
         <select>
             <option ng-repeat="one_doctor in doctor_list" ng-model-options="appt.doctor">{{ one_doctor.first_name }} {{ one_doctor.last_name }}</option>
         </select>
+        <label for="purpose">Purpose of Appointment</label>
         <input type="text" name="purpose" ng-model="appt.purpose">
+        <label for="time">Time of Appointment</label>
         <input type="datetime-local" name="appt_time" value="" ng-model="appt.time">
         <button type="submit" ng-click="create()">Submit</button>
     </form>

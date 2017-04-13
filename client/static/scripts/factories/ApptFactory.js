@@ -2,8 +2,12 @@ app.factory('ApptFactory', ['$http', function($http) {
 
     var factory = {};
 
+    factory.appt_list_doctor = function() {
+        return $http.get('/appts');
+    };
+
     factory.appt_list = function(pk) {
-        return $http.get('/appts/' + pk);
+        return $http.get('/appts/patient/' + pk);
     };
 
     factory.show = function(pk) {
@@ -14,12 +18,12 @@ app.factory('ApptFactory', ['$http', function($http) {
         return $http.post('/appts/', appt)
     };
 
-    factory.update = function(appt) {
-        return $http.patch('/appts/', user);
+    factory.update = function(appt, pk) {
+        return $http.patch('/appts/' + pk, appt);
     };
 
     factory.destroy = function(pk) {
-        return $http.get('/appts/' + pk);
+        return $http.delete('/appts/' + pk);
     };
 
     return factory;

@@ -1,4 +1,21 @@
 <div class="container" ng-controller="DoctorController">
+    <div>
+        <h3>Scheduled Appointments</h3>
+    <table class="table">
+        <thead>
+            <th>Patient</th>
+            <th>Purpose</th>
+            <th>Date and Time</th>
+            <th>Edit/Delete</th>
+        </thead>
+        <tr ng-repeat="one_appt in appt_list">
+            <td>{{ one_appt.first_name }} {{ one_appt.last_name }}</td>
+            <td>{{ one_appt.purpose }}</td>
+            <td>{{ one_appt.time }}</td>
+            <td><a href="#!/appts/{{ one_appt.id }}">Modify Appointment</a></td>
+        </tr>
+    </table>
+    </div>
     <h3>Current Patients</h3>
     <form class="form-inline">
         <input class="form-control" type="text" placeholder="Search" ng-model="query">

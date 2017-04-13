@@ -1,26 +1,27 @@
-app.controller('DoctorController', ['$scope', '$routeParams', '$location', 'UserFactory', function($scope, $routeParams, $location, UserFactory) {
+app.controller('DoctorController', ['$scope', '$routeParams', '$location', 'UserFactory', 'ApptFactory', function($scope, $routeParams, $location, UserFactory, ApptFactory) {
     $scope.patient_list = [];
+    $scope.appt_list = [];
 
     $scope.all_patients = function() {
         UserFactory.patient_list().then(function(response) {
-            console.log(response.data);
             if (response.data.success) {
                 $scope.patient_list = response.data.patient_list;
             } else {
-                console.log(errors);
+                console.log('errors');
             }
         })
     };
 
-    $scope.get_patient = function() {
-        UserFactory.show($routeParams.pk).then(function(response) {
+    $scope.appt_list = function() {
+        ApptFactory.appt_list_doctor().then(function(response) {
             if (response.data.success) {
-                $scope.patient = response.data.patient;
+                $scope.appt_list = response.data.appt_list;
             } else {
-                console.log(errors);
+                console.log('errors');
             }
         })
-    };
+    }
 
     $scope.all_patients();
+    $scope.appt_list();
 }])

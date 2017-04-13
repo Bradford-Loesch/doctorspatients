@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute', 'ngFileUpload']);
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -13,6 +13,9 @@ app.config(function ($routeProvider) {
         })
         .when('/patient/:pk/new_appt', {
             templateUrl: 'partials/create_appt.html'
+        })
+        .when('/appts/:pk', {
+            templateUrl: 'partials/edit_appt.html'
         })
         .otherwise({
             redirectTo: '/'

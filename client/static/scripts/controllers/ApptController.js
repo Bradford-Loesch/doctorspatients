@@ -13,9 +13,10 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'UserFa
     $scope.show = function() {
         ApptFactory.show($routeParams.pk).then(function(response) {
             if (response.data.success) {
-                $scope.appt_list = response.data.appt_list;
+                $scope.appt = response.data.appt;
+                $scope.appt.time = new Date($scope.appt.time);
             } else {
-                console.log(errors);
+                console.log('errors');
             }
         })
     };
@@ -25,7 +26,6 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'UserFa
         if ($scope.user.role == 1) {
             $scope.appt.doctor = $scope.user.id;
         }
-        console.log($scope.appt);
         ApptFactory.create($scope.appt).then(function(response) {
             if (response.data.success) {
                 $location.url('/patient/' + $routeParams.pk);
@@ -34,20 +34,32 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'UserFa
     };
 
     $scope.update = function() {
-        ApptFactory.update($scope.appt).then(function(response) {
-
+        console.log($scope.appt);
+        ApptFactory.update($scope.appt, $routeParams.pk).then(function(response) {
+            if (response.data.success) {
+                $location.url('/patient/' + $scope.appt.patient_id);
+            } else {
+                console.log('errors');
+            }
         })
     };
 
     $scope.destroy = function() {
-        ApptFactory.destroy($routeParams.pk).then(function() {
-            
+        ApptFactory.destroy($routeParams.pk).then(function(response) {
+           if (response.data.success) {
+                $location.url('/patient/' + $scope.appt.patient_id);
+            } else {
+                console.log('errors');
+            } 
         })
     };
 
 
     if ($location.url().includes('new_appt')) {
         $scope.doctor_list();
+    } else if ($location.url().includes('appts')) {
+        $scope.doctor_list();
+        $scope.show();
     }
 
 }])

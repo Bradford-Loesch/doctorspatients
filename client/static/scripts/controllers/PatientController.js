@@ -1,4 +1,4 @@
-app.controller('PatientController', ['$scope', '$routeParams', '$location', 'UserFactory', 'ApptFactory', function($scope, $routeParams, $location, UserFactory, ApptFactory) {
+app.controller('PatientController', ['$scope', '$routeParams', '$location', 'Upload', 'UserFactory', 'ApptFactory', function($scope, $routeParams, $location, Upload, UserFactory, ApptFactory) {
     $scope.patient = {};
     $scope.appt_list = [];
 
@@ -15,6 +15,7 @@ app.controller('PatientController', ['$scope', '$routeParams', '$location', 'Use
     $scope.get_appts = function() {
         ApptFactory.appt_list($routeParams.pk).then(function(response) {
             if (response.data.success) {
+                console.log(response.data);
                 $scope.appt_list = response.data.appt_list;
             } else {
                 console.log('errors');

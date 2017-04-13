@@ -12,9 +12,10 @@ module.exports = function(app) {
     app.post('/users/', Users.login);
 
     // Appointment Routes
-    app.get('/appts/:pk', Appts.appt_list);
-    app.get('/appts/', Appts.appt_list_doctor);
-    app.post('/appts/', Appts.create);
+    app.get('/appts/patient/:pk', Appts.appt_list);
     app.patch('/appts/:pk', Appts.update);
+    app.post('/appts/', Appts.create);
+    app.get('/appts/:pk', Appts.show);
+    app.get('/appts/', Appts.appt_list_doctor);
     app.delete('/appts/:pk', Appts.destroy);
 }

@@ -37,14 +37,22 @@
                     <th>Doctor</th>
                     <th>Purpose</th>
                     <th>Date and Time</th>
+                    <th>Edit/Delete</th>
                 </thead>
                 <tr ng-repeat="one_appt in appt_list">
                     <td>{{ one_appt.first_name }} {{ one_appt.last_name }}</td>
                     <td>{{ one_appt.purpose }}</td>
                     <td>{{ one_appt.time }}</td>
+                    <td><a href="#!/appts/{{ one_appt.id }}">Modify Appointment</a></td>
                 </tr>
             </table>
             <h5><a href="#!/patient/{{ patient.id }}/new_appt">Schedule a new appointment</a></h5>
+        </div>
+        <div>
+            <h3>Patient Files</h3>
+            <form>
+                
+            </form>
         </div>
     </div>
 </div>

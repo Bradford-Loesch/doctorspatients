@@ -2,13 +2,13 @@ var fs = require('fs');
 
 module.exports = {
     patients: function(request, response) {
-        db.all('SELECT * FROM User Where role=0', function(err, patient_list) {
+        db.all('SELECT * FROM User Where role=0 ORDER BY last_name ASC', function(err, patient_list) {
             response.json({success:true, patient_list: patient_list});
         });
     },
 
     doctors: function(request, response) {
-        db.all('SELECT * FROM User Where role=1', function(err, doctor_list) {
+        db.all('SELECT * FROM User Where role=1 ORDER BY last_name ASC', function(err, doctor_list) {
             response.json({success:true, doctor_list: doctor_list});
         });
     },
@@ -38,8 +38,6 @@ module.exports = {
     },
 
     logout: function (request, response) {
-        console.log('logout function');
-        console.log(request.session.user);
         request.session.destroy(function() {
             response.json({success: true});
         });

@@ -1,15 +1,15 @@
 module.exports = {
 
     appt_list: function(request, response) {
-        if (request.params.pk == request.session.user.id) {
-            db.all('SELECT * FROM Appointment JOIN User ON User.id = Appointment.doctor_id WHERE patient_id=$1', [request.params.pk], function(err, appt_list) {
+        db.all('SELECT * FROM Appointment JOIN User ON User.id = Appointment.doctor_id WHERE patient_id=$1', [request.params.pk], function(err, appt_list) {
+            response.json({success:true, appt_list: appt_list});
+        });
+    },
+
+    appt_list_doctor: function(request, response) {
+        db.all('SELECT * FROM Appointment JOIN User ON User.id = Appointment.patient_id WHERE doctor_id=$2', [request.params.pk, request.session.user.id], function(err, appt_list) {
                 response.json({success:true, appt_list: appt_list});
             });
-        } else {
-            db.all('SELECT * FROM Appointment JOIN User ON User.id = Appointment.patient_id WHERE patient_id=$1 AND doctor_id=$2', [request.params.pk, request.session.user.id], function(err, appt_list) {
-                response.json({success:true, appt_list: appt_list});
-            });
-        }
     },
 
     show: function(request, response) {

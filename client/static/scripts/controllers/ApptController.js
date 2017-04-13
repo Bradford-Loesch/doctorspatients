@@ -22,6 +22,9 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'UserFa
 
     $scope.create = function() {
         $scope.appt.patient = $routeParams.pk;
+        if ($scope.user.role == 1) {
+            $scope.appt.doctor = $scope.user.id;
+        }
         console.log($scope.appt);
         ApptFactory.create($scope.appt).then(function(response) {
             if (response.data.success) {
@@ -45,10 +48,6 @@ app.controller('ApptController', ['$scope', '$routeParams', '$location', 'UserFa
 
     if ($location.url().includes('new_appt')) {
         $scope.doctor_list();
-    } else {
-        // $scope.index();
-        console.log('failed to find new_appt');
-        console.log($location.url());
     }
 
 }])

@@ -12,8 +12,8 @@ module.exports = function(app) {
     app.post('/users/', Users.login);
 
     // Appointment Routes
-    app.get('/appts/', Appts.appt_list);
     app.get('/appts/:pk', Appts.appt_list);
+    app.get('/appts/', Appts.appt_list_doctor);
     app.post('/appts/', Appts.create);
     app.patch('/appts/:pk', Appts.update);
     app.delete('/appts/:pk', Appts.destroy);

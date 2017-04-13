@@ -1,6 +1,11 @@
 app.controller('PatientController', ['$scope', '$routeParams', '$location', 'Upload', 'UserFactory', 'ApptFactory', function($scope, $routeParams, $location, Upload, UserFactory, ApptFactory) {
     $scope.patient = {};
     $scope.appt_list = [];
+    $scope.file = {};
+
+    $scope.submit = function() {
+        
+    }
 
     $scope.get_patient = function() {
         UserFactory.show($routeParams.pk).then(function(response) {

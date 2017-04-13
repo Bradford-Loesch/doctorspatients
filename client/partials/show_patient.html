@@ -51,7 +51,14 @@
         <div>
             <h3>Patient Files</h3>
             <form>
-                
+                <div class="form-group">
+                    <label for="data">Upload File</label>
+                    <input type="text" class="form-control" ng-model="file.data">
+                </div>
+                <div class="form-group">
+                    <label for="name">Please specify a description for this file</label>
+                    <input type="text" class="form-control" ng-model="file.name">
+                </div>
             </form>
         </div>
     </div>

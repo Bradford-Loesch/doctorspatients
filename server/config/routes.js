@@ -1,5 +1,7 @@
 var Users = require('./../controllers/UserCtrl.js')
 var Appts = require('./../controllers/ApptCtrl.js')
+var Files = require('./../controllers/FileCtrl.js')
+
 
 module.exports = function(app) {
 
@@ -10,6 +12,8 @@ module.exports = function(app) {
     app.get('/users/', Users.get_user);
     app.get('/users/:pk', Users.show);
     app.post('/users/', Users.login);
+    app.get('/files/', Files.get_files);
+    app.post('/files/', Files.create);
 
     // Appointment Routes
     app.get('/appts/patient/:pk', Appts.appt_list);
@@ -18,4 +22,10 @@ module.exports = function(app) {
     app.get('/appts/:pk', Appts.show);
     app.get('/appts/', Appts.appt_list_doctor);
     app.delete('/appts/:pk', Appts.destroy);
+
+    // File Routes
+    app.get('/files/patient/:pk', Files.file_list);
+    app.get('/files/:pk', Files.show);
+    app.post('/files', Files.create);
+    app.delete('/files/:pk', Files.destroy);
 }

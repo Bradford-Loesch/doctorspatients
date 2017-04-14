@@ -19,7 +19,7 @@ app.controller('UserController', ['$scope', '$routeParams', '$location', 'UserFa
 
     $scope.login = function() {
         UserFactory.login($scope.user).then(function(response) {
-            console.log(response.data);
+            $scope.user= {};
             if (response.data.success) {
                 $scope.user = response.data.user;
                 if ($scope.user.role == 1) {

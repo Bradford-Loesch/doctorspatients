@@ -1,7 +1,6 @@
 module.exports = {
 
     appt_list: function(request, response) {
-        console.log(request.body);
         db.all('SELECT * FROM User JOIN Appointment ON User.id = Appointment.doctor_id WHERE patient_id=$1', [request.params.pk], function(err, appt_list) {
             if (!err) {
                 response.json({success: true, appt_list: appt_list});
@@ -42,7 +41,7 @@ module.exports = {
                 console.log(err);
                 response.json({success: false});
             }
-        })
+        });
     },
 
     update: function(request, response) {
@@ -59,7 +58,7 @@ module.exports = {
                 console.log(err);
                 response.json({success: false});
             }
-        })
+        });
     },
 
     destroy: function(request, response) {
@@ -70,6 +69,6 @@ module.exports = {
                 console.log(err);
                 response.json({success: false});
             }
-        })
+        });
     }
 }

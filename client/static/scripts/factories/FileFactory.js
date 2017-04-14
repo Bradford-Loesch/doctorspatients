@@ -1,4 +1,6 @@
-applicationCache.factory('FileFactory', ['$http', function($http) {
+app.factory('FileFactory', ['$http', function($http) {
+
+    var factory = {};
 
     factory.file_list = function(pk) {
         return $http.get('/files/patient/' + pk);
@@ -13,6 +15,8 @@ applicationCache.factory('FileFactory', ['$http', function($http) {
     };
 
     factory.destroy = function(pk) {
-        return $http.delete('/files/' + pk)
+        return $http.delete('/files/' + pk);
     };
+
+    return factory;
 }])

@@ -1,6 +1,7 @@
-var Users = require('./../controllers/UserCtrl.js')
-var Appts = require('./../controllers/ApptCtrl.js')
-var Files = require('./../controllers/FileCtrl.js')
+var Users = require('./../controllers/UserCtrl.js');
+var Appts = require('./../controllers/ApptCtrl.js');
+var Files = require('./../controllers/FileCtrl.js');
+var multer = require('multer')({dest: '/files'});
 
 
 module.exports = function(app) {
@@ -12,8 +13,6 @@ module.exports = function(app) {
     app.get('/users/', Users.get_user);
     app.get('/users/:pk', Users.show);
     app.post('/users/', Users.login);
-    app.get('/files/', Files.get_files);
-    app.post('/files/', Files.create);
 
     // Appointment Routes
     app.get('/appts/patient/:pk', Appts.appt_list);
@@ -28,4 +27,4 @@ module.exports = function(app) {
     app.get('/files/:pk', Files.show);
     app.post('/files', Files.create);
     app.delete('/files/:pk', Files.destroy);
-}
+};

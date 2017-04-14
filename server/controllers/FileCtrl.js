@@ -11,7 +11,7 @@ module.exports = {
         });
     },
 
-    get_files: function(request, response) {
+    file_list: function(request, response) {
         db.all('SELECT * FROM File WHERE File.user_id = $1', [request.params.pk], function(err, file) {
             if (!err) {
                 response.json({success: true, file_list: file_list});

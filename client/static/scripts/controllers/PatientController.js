@@ -6,17 +6,18 @@ app.controller('PatientController', ['$scope', '$routeParams', '$location', 'Upl
 
     $scope.upload = function() {
         $scope.file.patient_id = $routeParams.pk;
-        FileFactory.create($scope.file).then(function(response) {
-            if (response.data.success) {
-                $scope.get_files();
-            } else {
-                console.log('errors');
-            }
-        })
+        console.log($scope.file);
+        // FileFactory.create($scope.file).then(function(response) {
+        //     if (response.data.success) {
+        //         $scope.get_files();
+        //     } else {
+        //         console.log('errors');
+        //     }
+        // })
     };
 
     $scope.get_files = function() {
-        FileFactory.get_files($routeParams.pk).then(function(response) {
+        FileFactory.file_list($routeParams.pk).then(function(response) {
             if (response.data.success) {
                 $scope.file_list = response.data.file_list;
             } else {
@@ -47,5 +48,5 @@ app.controller('PatientController', ['$scope', '$routeParams', '$location', 'Upl
 
     $scope.get_patient();
     $scope.get_appts();
-    $scope.get_files();
+    // $scope.get_files();
 }])

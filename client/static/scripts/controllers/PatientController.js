@@ -7,6 +7,12 @@ app.controller('PatientController', ['$scope', '$routeParams', '$location', 'Upl
     $scope.upload = function() {
         $scope.file.patient_id = $routeParams.pk;
         console.log($scope.file);
+        Upload.upload({
+            url: '/files',
+            data: $scope.file
+        }).then(function(response) {
+            $scope.get_files();
+        })
         // FileFactory.create($scope.file).then(function(response) {
         //     if (response.data.success) {
         //         $scope.get_files();

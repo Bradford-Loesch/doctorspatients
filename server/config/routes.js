@@ -1,7 +1,7 @@
 var Users = require('./../controllers/UserCtrl.js');
 var Appts = require('./../controllers/ApptCtrl.js');
 var Files = require('./../controllers/FileCtrl.js');
-var multer = require('multer')({dest: '/files'});
+var multer = require('multer')({dest: '/patient_files'});
 
 
 module.exports = function(app) {
@@ -25,6 +25,6 @@ module.exports = function(app) {
     // File Routes
     app.get('/files/patient/:pk', Files.file_list);
     app.get('/files/:pk', Files.show);
-    app.post('/files', Files.create);
+    app.post('/files', multer.single('patient_files'), Files.create);
     app.delete('/files/:pk', Files.destroy);
 };
